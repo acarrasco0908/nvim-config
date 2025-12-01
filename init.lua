@@ -1,3 +1,4 @@
-require("config")
-require("initlazy")
-
+require("options")
+require("keymaps")
+require("lazy-init")
+require("lazy-plugins")
