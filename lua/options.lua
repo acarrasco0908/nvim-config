@@ -1,8 +1,8 @@
 -- Cursor
-vim.opt.guicursor = ""
-vim.opt.guicursor = 'n-v-c-sm-i-ci-ve:block'
-vim.opt.guicursor = 'r-cr-o:hor20'
-vim.opt.guicursor = 'a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor'
+-- vim.opt.guicursor = ""
+-- vim.opt.guicursor = 'n-v-c-sm-i-ci-ve:block'
+-- vim.opt.guicursor = 'r-cr-o:hor20'
+-- vim.opt.guicursor = 'a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor'
 
 -- Line numbers
 vim.opt.number = true
