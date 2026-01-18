@@ -1,35 +1,21 @@
+-- this is what you previously passed to ensure_installed
+local languages = { 'c', 'lua', 'python' }
 return {
-  { -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
-    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-    opts = {
-      ensure_installed = {
-                'bash',
-                'c',
-                'cmake',
-                'diff',
-                'html',
-                'lua',
-                'luadoc',
-                'markdown',
-                'markdown_inline',
-                'python',
-                'query',
-                'vim',
-                'vimdoc'
-            },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
+    {
+        'nvim-treesitter/nvim-treesitter',
+        branch = 'main',
+        lazy = false,
+        build = ':TSUpdate',
     },
-  },
+    {
+        'MeanderingProgrammer/treesitter-modules.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        opts = {
+            ensure_installed = languages,
+            -- fold = { enable = true },
+            highlight = { enable = true },
+            indent = { enable = true },
+            incremental_selection = { enable = true },
+        },
+    },
 }
