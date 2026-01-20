@@ -1,17 +1,25 @@
 return {
-    'ThePrimeagen/harpoon',
-    enabled = false,
-    lazy = false,
-    dependencies = {
-        'nvim-lua/plenary.nvim',
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    enabled = true,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+        settings = {
+            save_on_toggle = true,
+        },
     },
-    config = true,
+    config = function()
+        require("harpoon"):setup()
+    end,
     keys = {
-        { '<leader>a', "<cmd>lua require('harpoon.mark').add_file()<cr>", desc = 'Mark file with harpoon' },
-        { '<C-e>', "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", desc = 'Show harpoon marks' },
-        { '<leader>h', "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", desc = 'Harpoon buffer 1' },
-        { '<leader>j', "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", desc = 'Harpoon buffer 2' },
-        { '<leader>k', "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", desc = 'Harpoon buffer 3' },
-        { '<leader>l', "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", desc = 'Harpoon buffer 4' },
+        { "<leader>a", function() require("harpoon"):list():add() end, desc = "harpoon add file", },
+        { "<C-e>",     function() local harpoon = require("harpoon") harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "harpoon quick menu", },
+        { "<leader>h", function() require("harpoon"):list():select(1) end, desc = "harpoon to file 1", },
+        { "<leader>j", function() require("harpoon"):list():select(2) end, desc = "harpoon to file 2", },
+        { "<leader>k", function() require("harpoon"):list():select(3) end, desc = "harpoon to file 3", },
+        { "<leader>l", function() require("harpoon"):list():select(4) end, desc = "harpoon to file 4", },
     },
+    -- Optional: If I want to make harpoon use telescope down the line... this 
+    -- is a good place to start.
+    -- https://github.com/ThePrimeagen/harpoon/issues/634
 }
